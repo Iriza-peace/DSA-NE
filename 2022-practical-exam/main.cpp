@@ -304,7 +304,8 @@ int processCommands()
     string input;
 
     string command;
-
+//record nyabihu fever 25. [record,nyabihu,fever,25]
+//add nyabihu
     do
     {
         cout << "Console >";
@@ -315,8 +316,10 @@ int processCommands()
             input[i] = tolower(input[i]);
         }
 
-        istringstream iss(input);
-        iss >> command;
+        istringstream iss(input);//0
+        iss >> command;//1
+
+        //add
 
         if (command == "add")
         {
