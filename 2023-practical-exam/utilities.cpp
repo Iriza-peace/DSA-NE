@@ -3,6 +3,7 @@
 #include <vector>   // Vector container
 #include <sstream>  // String stream operations
 #include <regex>    //Regular expressions
+#include <string>    // String operations
 
 using namespace std;
 
@@ -88,6 +89,7 @@ bool checkDuplicate(ifstream &file, const string &keyword, const int pos)
     while (getline(file, line))
     {
         vector<string> row = splitString(line, ',');
+        
         if (row.size() > pos && row[pos] == keyword)
         {
             return true;
