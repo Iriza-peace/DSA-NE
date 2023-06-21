@@ -72,9 +72,8 @@ void listItems()
 }
 
 // Function to add a new item
-void addItem(string &item_id, string &item_name, string &item_quantity, string &item_registration_date)
+void addItem(const string &item_id, const string &item_name, const string &item_quantity, const string &item_registration_date)
 {
-
     // Validate the input data format
     if (!isNumeric(item_id) || !isNumeric(item_quantity) || !isValidDateFormat(item_registration_date))
     {
@@ -82,25 +81,24 @@ void addItem(string &item_id, string &item_name, string &item_quantity, string &
         return;
     }
 
-    // Open the items file for writing
-    ofstream file = openOutputFile(ITEMS_FILE);
     // Open the items file for reading to check for duplicates
     ifstream inputFile = openInputFile(ITEMS_FILE);
 
     // Check if the item with the given item_id already exists
-    if (!checkDuplicate(inputFile, item_id, 0))
-    {
-        // Write the new item to the file
-        file << item_id << "," << item_name << "," << item_quantity << "," << item_registration_date << endl;
-        cout << "Item is added successfully." << endl;
-    }
-    else
+    if (checkDuplicate(inputFile, item_id, 0))
     {
         cout << "Item with id: " << item_id << " already exists." << endl;
+        inputFile.close();
+        return;
     }
 
-    file.close();
     inputFile.close();
+
+    // Open the items file in append mode to add the new item
+    ofstream file(ITEMS_FILE, ios::app);
+    file << item_id << "," << item_name << "," << item_quantity << "," << item_registration_date << endl;
+    cout << "Item is added successfully." << endl;
+    file.close();
 }
 
 // Function to display the help menu
@@ -117,19 +115,19 @@ void help()
 }
 
 // Function to display an invalid command message
-void invalidCommand(string correctCommand)
+void invalidCommand(const string &correctCommand)
 {
     cout << "Invalid command. Usage: " << correctCommand << endl;
 }
 
 // Function to process user commands
-int processCommands()
+void processCommands()
 {
     cout << "Need help? Type 'help' then press Enter key." << endl;
 
     string input;
-
     string command;
+
     do
     {
         cout << "Console >";
@@ -137,6 +135,7 @@ int processCommands()
 
         istringstream iss(input);
         iss >> command;
+
         // Convert the command to lowercase for case-insensitive comparison
         for (size_t i = 0; i < command.length(); i++)
         {
@@ -149,7 +148,6 @@ int processCommands()
 
             listItems();
             cout << "------------------------------------------------------------------------------------------------------------------" << endl;
-
         }
         else if (command == "itemadd")
         {
@@ -165,7 +163,6 @@ int processCommands()
                 addItem(item_id, item_name, item_quantity, item_registration_date);
             }
         }
-
         else if (command == "help")
         {
             help();
@@ -175,13 +172,11 @@ int processCommands()
             // Invalid command entered
             if (command != "exit")
             {
-                cout << "Invalid command. Below is the help option to provide you list of commands." << endl;
+                cout << "Invalid command. Below is the help option to provide you a list of commands." << endl;
                 help();
             }
         }
     } while (command != "exit");
-
-    return 0;
 }
 
 int main()
