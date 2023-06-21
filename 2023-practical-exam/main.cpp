@@ -23,7 +23,7 @@ struct Item
 // Function to compare items based on item_name for sorting
 bool compareItems(const Item &item1, const Item &item2)
 {
-    return item1.item_name < item2.item_name;
+    return item1.item_id < item2.item_id;
 }
 
 // Function to list all items
