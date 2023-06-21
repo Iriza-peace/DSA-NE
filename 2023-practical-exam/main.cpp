@@ -1,10 +1,10 @@
-#include <iostream>     // Input/output stream operations
-#include <string>       // String operations
-#include <sstream>      // String stream operations
-#include <fstream>      // File input/output operations
-#include <vector>       // Vector container
-#include <algorithm>    // Algorithms
-#include <iomanip>      // Input/output manipulators
+#include <iostream>  // Input/output stream operations
+#include <string>    // String operations
+#include <sstream>   // String stream operations
+#include <fstream>   // File input/output operations
+#include <vector>    // Vector container
+#include <algorithm> // Algorithms
+#include <iomanip>   // Input/output manipulators
 
 #include "utilities.cpp"
 
@@ -145,7 +145,11 @@ int processCommands()
         // Process the command
         if (command == "itemslist")
         {
+            cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+
             listItems();
+            cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+
         }
         else if (command == "itemadd")
         {
