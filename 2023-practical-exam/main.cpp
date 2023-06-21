@@ -23,7 +23,7 @@ struct Item
 // Function to compare items based on item_name for sorting
 bool compareItems(const Item &item1, const Item &item2)
 {
-    return item1.item_id < item2.item_id;
+    return item1.item_name < item2.item_name;
 }
 
 // Function to list all items
@@ -60,10 +60,10 @@ void listItems()
         // Display each item's details
         for (const auto &item : items)
         {
-            cout << "Item ID: " << setw(2) << item.item_id << "            "
-                 << "Item Name: " << setw(10) << item.item_name << "                "
-                 << "Quantity: " << setw(2) << item.item_quantity << "      "
-                 << "Reg Date: " << item.item_registration_date << endl
+            cout << "Item ID:" << setw(2) << item.item_id << "            "
+                 << "Item Name:" << setw(10) << item.item_name << "                "
+                 << "Quantity :" << setw(2) << item.item_quantity << "      "
+                 << "Reg Date :" << item.item_registration_date << endl
                  << endl;
         }
     }
