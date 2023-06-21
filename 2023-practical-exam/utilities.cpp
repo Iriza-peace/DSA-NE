@@ -36,6 +36,7 @@ bool isNumeric(const string &str)
     return regex_match(str, pattern);
 }
 
+//Open output file by providing filename and mode which is either append or write(a or w)
 ofstream openOutputFile(string &filename, const string &mode = "a")
 {
     ofstream file;
@@ -67,6 +68,7 @@ ifstream openInputFile(string &filename)
     return file;
 }
 
+//split a string into a vector of strings
 vector<string> splitString(const string &input, char delimiter)
 {
     vector<string> tokens;
@@ -79,6 +81,7 @@ vector<string> splitString(const string &input, char delimiter)
     return tokens;
 }
 
+//check if a file contains a specific keyword at a certain position
 bool checkDuplicate(ifstream &file, const string &keyword, const int pos)
 {
     string line;
