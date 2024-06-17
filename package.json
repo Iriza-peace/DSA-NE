@@ -1,0 +1,11 @@
+{
+  "name": "dsa-starter-templates",
+  "version": "1.0.0",
+  "description": "This is the dsa-starter-templates to use",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

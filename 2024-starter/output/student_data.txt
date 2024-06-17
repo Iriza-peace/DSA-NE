@@ -1,0 +1,18 @@
+
+Name: Kagabe Eunice
+Age: 21
+Address: Muhanga
+Courses:
+ - DSA
+ - SAD
+
+Name: Nina Malaika
+Age: 19
+Address: Kigali
+Courses:
+ - DSA
+ - SAD
+ - NETWORKING
+
+
+
